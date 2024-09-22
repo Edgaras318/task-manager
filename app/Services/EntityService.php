@@ -80,4 +80,9 @@ class EntityService
             'entity_id' => $entity->id, // Make sure to set the entity_id
         ]);
     }
+
+    public function find(int $id): Entity
+    {
+        return $this->entityRepository->find($id);
+    }
 }

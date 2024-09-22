@@ -85,6 +85,13 @@ class EntityController extends Controller
 
         return response()->json($comment, 201);
     }
+
+    public function show(int $id)
+    {
+        $entity = $this->entityService->find($id);
+
+        return response()->json($entity);
+    }
 }
 
 
