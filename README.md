@@ -38,12 +38,17 @@ This application provides a RESTful API for managing entities and their associat
    ```bash
    docker-compose up -d
 
-4. **Run Migrations**
+4. **Install composer**
+
+   ```bash
+   docker-compose exec web composer install
+
+5. **Run Migrations**
    To set up the database schema, run:
    ```bash
    docker-compose exec web php artisan migrate
 
-5. **Seed the Database (Optional)**
+6. **Seed the Database (Optional)**
    If you want to seed the database with initial data, run:
    ```bash
    docker-compose exec web php artisan db:seed
