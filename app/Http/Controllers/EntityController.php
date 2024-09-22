@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\DTO\CommentDTO;
 use App\DTO\EntityDTO;
+use App\Http\Requests\AddCommentRequest;
+use App\Http\Requests\ChangeStatusRequest;
+use App\Http\Requests\ChangeTypeRequest;
 use App\Http\Requests\StoreEntityRequest;
 use App\Http\Requests\UpdateEntityRequest;
 use App\Services\EntityService;
@@ -50,36 +53,23 @@ class EntityController extends Controller
         return response()->json(null, 204);
     }
 
-    public function changeStatus(Request $request, int $id)
+    public function changeStatus(ChangeStatusRequest $request, int $id)
     {
-        $validated = $request->validate([
-            'status' => 'required|string|max:50',
-        ]);
-
-        $entity = $this->entityService->changeStatus($id, $validated['status']);
-
+        $validated = $request->validated();
+        $entity = $this->entityService->changeAttribute($id, 'status', $validated['status']);
         return response()->json($entity);
     }
 
-    public function changeType(Request $request, int $id)
+    public function changeType(ChangeTypeRequest $request, int $id)
     {
-        $validated = $request->validate([
-            'type' => 'required|string|max:50',
-        ]);
-
-        $entity = $this->entityService->changeType($id, $validated['type']);
-
+        $validated = $request->validated();
+        $entity = $this->entityService->changeAttribute($id, 'type', $validated['type']);
         return response()->json($entity);
     }
 
-    public function addComment(Request $request, int $entityId)
+    public function addComment(AddCommentRequest $request, int $entityId)
     {
-        $validated = $request->validate([
-            'comment' => 'required|string',
-            'parent_id' => 'nullable|integer|exists:comments,id', // For replies
-        ]);
-
-        $validated['entity_id'] = $entityId;
+        $validated = $request->validated();
         $commentDTO = new CommentDTO($validated);
         $comment = $this->entityService->addComment($entityId, $commentDTO);
 
