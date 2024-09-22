@@ -111,18 +111,44 @@ Update the .env file with your database connection details and other configurati
       }
       ```
 
-### Comments
+## Comments API Routes
 
-- **POST /api/entities/{entityId}/comments**
-    - Adds a new comment to a specific entity.
-    - For top-level comment or existing comment ID for replies
-    - **Request Body:**
-      ```json
-      {
-        "comment": "This is a comment.",
-        "parent_id": null 
-      }
-      ```
+### **POST /api/entities/{entityId}/comments**
+- **Description**: Adds a new comment to a specific entity.
+- **Request Body**:
+    ```json
+    {
+      "comment": "This is a comment.",
+      "parent_id": null 
+    }
+    ```
+    - For top-level comments, set `parent_id` to `null`; for replies, provide the existing comment ID.
+- **Response**:
+    - Returns the created comment object with a 201 status code.
 
-- **GET /api/entities/{entityId}/comments**
-    - Retrieves all comments for a specific entity.
+### **GET /api/entities/{entityId}/comments**
+- **Description**: Retrieves all comments for a specific entity, including replies.
+- **Response**:
+    - Returns an array of comment objects with a 200 status code.
+
+### **PUT /api/entities/{entityId}/comments/{id}**
+- **Description**: Updates a specific comment identified by the `id`.
+- **Request Body**:
+    ```json
+    {
+      "comment": "This is an updated comment.",
+      "parent_id": null 
+    }
+    ```
+- **Response**:
+    - Returns the updated comment object with a 200 status code.
+
+### **DELETE /api/entities/{entityId}/comments/{id}**
+- **Description**: Soft deletes a specific comment identified by the `id`.
+- **Response**:
+    - Returns a success message with a 200 status code, confirming the deletion.
+
+## Summary of Responses
+- **201 Created**: Returned when a new comment is successfully added.
+- **200 OK**: Returned for successful retrieval, update, or deletion of comments.
+- **404 Not Found**: Returned if a specified comment does not exist (for updates and deletes).

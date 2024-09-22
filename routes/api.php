@@ -24,6 +24,6 @@ Route::prefix('entities/{entityId}/comments')->group(function () {
     // Routes for Comments associated with Entities
     Route::get('/', [CommentController::class, 'index']); // Get comments for a specific entity
     Route::post('/', [CommentController::class, 'store']); // Add a new comment to a specific entity
-//    Route::put('/{id}', [CommentController::class, 'update']); // Update a specific comment
-//    Route::delete('/{id}', [CommentController::class, 'destroy']); // Soft delete a specific comment
+    Route::put('/{id}', [CommentController::class, 'update']); // Update a specific comment
+    Route::delete('/{id}', [CommentController::class, 'destroy']); // Soft delete a specific comment
 });

@@ -29,6 +29,7 @@ class EntityRepository
 
     public function all()
     {
+        // To see deleted as well for testing purpose
         return Entity::withTrashed()->get();
     }
 }

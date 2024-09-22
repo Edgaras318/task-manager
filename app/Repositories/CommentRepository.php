@@ -29,6 +29,9 @@ class CommentRepository
 
     public function findByEntity(int $entityId)
     {
-        return Comment::where('entity_id', $entityId)->get();
+        // To see deleted as well for testing purpose
+        return Comment::withTrashed()->where('entity_id', $entityId)->get();
+
+//        return Comment::where('entity_id', $entityId)->get();
     }
 }
