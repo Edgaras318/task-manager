@@ -25,30 +25,33 @@ This application provides a RESTful API for managing entities and their associat
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/entity-management-system.git
-   cd entity-management-system
+   git clone [https://github.com/yourusername/entity-management-system.git](https://github.com/Edgaras318/task-manager.git)
+   cd task-manager
 
 2. **Setup Environment Variables**
 
    ```bash
    cp .env.example .env
 
-Update the .env file with your database connection details and other configurations.
-
 3. **Build and Run the Docker Containers**
 
    ```bash
    docker-compose up -d
 
-4. **Run Migrations**
+4. **Install composer**
+
+   ```bash
+   docker-compose exec web composer install
+
+5. **Run Migrations**
    To set up the database schema, run:
    ```bash
-   docker-compose exec app php artisan migrate
+   docker-compose exec web php artisan migrate
 
-5. **Seed the Database (Optional)**
+6. **Seed the Database (Optional)**
    If you want to seed the database with initial data, run:
    ```bash
-   docker-compose exec app php artisan db:seed
+   docker-compose exec web php artisan db:seed
 
 ## API Endpoints
 
