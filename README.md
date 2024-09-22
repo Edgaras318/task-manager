@@ -126,9 +126,3 @@ Update the .env file with your database connection details and other configurati
 
 - **GET /api/entities/{entityId}/comments**
     - Retrieves all comments for a specific entity.
-
-- **PUT /api/entities/{entityId}/comments/{id}**
-    - Updates a specific comment.
-
-- **DELETE /api/entities/{entityId}/comments/{id}**
-    - Soft deletes a specific comment.
