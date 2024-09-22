@@ -41,12 +41,12 @@ This application provides a RESTful API for managing entities and their associat
 4. **Run Migrations**
    To set up the database schema, run:
    ```bash
-   docker-compose exec app php artisan migrate
+   docker-compose exec web php artisan migrate
 
 5. **Seed the Database (Optional)**
    If you want to seed the database with initial data, run:
    ```bash
-   docker-compose exec app php artisan db:seed
+   docker-compose exec web php artisan db:seed
 
 ## API Endpoints
 
