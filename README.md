@@ -25,8 +25,8 @@ This application provides a RESTful API for managing entities and their associat
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/entity-management-system.git
-   cd entity-management-system
+   git clone [https://github.com/yourusername/entity-management-system.git](https://github.com/Edgaras318/task-manager.git)
+   cd task-manager
 
 2. **Setup Environment Variables**
 
