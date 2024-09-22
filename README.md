@@ -33,8 +33,6 @@ This application provides a RESTful API for managing entities and their associat
    ```bash
    cp .env.example .env
 
-Update the .env file with your database connection details and other configurations.
-
 3. **Build and Run the Docker Containers**
 
    ```bash
